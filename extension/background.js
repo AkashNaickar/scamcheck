@@ -7,6 +7,7 @@ const MENU_ID = 'scamcheck-selection';
 chrome.runtime.onInstalled.addListener(async () => {
   chrome.contextMenus.create({
     id: MENU_ID,
+    // ASSUMPTION: static menu label, not analysis text.
     title: 'Check if this is a scam',
     contexts: ['selection'],
   });

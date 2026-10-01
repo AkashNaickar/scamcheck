@@ -17,10 +17,12 @@ async function init() {
 saveButton.addEventListener('click', async () => {
   const value = backendInput.value.trim().replace(/\/+$/, '');
   if (!/^https?:\/\/[^\s]+$/i.test(value)) {
+    // ASSUMPTION: this options-page message is static UI chrome, not analysis text.
     setStatus('Enter a full URL starting with http:// or https://');
     return;
   }
   await chrome.storage.sync.set({ backendUrl: value });
+  // ASSUMPTION: static UI chrome, not analysis text.
   setStatus('Saved.');
 });
 
