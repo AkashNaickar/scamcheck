@@ -91,6 +91,22 @@ tests/             unit + API tests (FakeJudge) and fixtures/cases.json
 extension/         Manifest V3 browser extension
 ```
 
+## Browser extension (Manifest V3)
+
+The `extension/` folder is a plain-JS MV3 extension — no build step.
+
+1. Start the backend (`npm run dev`) so it listens on `http://localhost:8787`.
+2. Open `chrome://extensions`, enable **Developer mode**, click **Load unpacked**, and select the `extension/` folder.
+3. Select any text on a page, right-click and choose **"Check if this is a scam"** — the popup opens pre-filled and runs the check. You can also click the toolbar icon and paste text.
+4. To change the backend URL, open the extension's **Settings** (options) page and save a new URL. The default is `http://localhost:8787`.
+
+Notes:
+
+- The API key **never** leaves the server; the extension only calls `POST /api/check`.
+- `host_permissions` is limited to `http://localhost:8787/*`. If you point the extension at a different backend origin, add that origin to `host_permissions` in `extension/manifest.json` and reload the extension.
+- The backend allows `chrome-extension://` origins via CORS automatically.
+- No remote scripts, no analytics, and response data is rendered with `textContent` only.
+
 ## Disclaimer
 
 This is a second opinion, not a guarantee. When in doubt, contact the company using a number or website you already trust.
