@@ -1,6 +1,6 @@
 node_modules/
 .env
-data/
-dist/
+/data/
+/dist/
 *.log
 .playwright-mcp/
