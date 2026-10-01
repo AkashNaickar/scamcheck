@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>ScamCheck</title>
+  <link
+    rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231d4ed8'/%3E%3Cpath d='M16 6l8 3v7c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10V9l8-3z' fill='none' stroke='white' stroke-width='2.5'/%3E%3Cpath d='M12 16l3 3 5-6' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"
+  />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="page-header">
+        <h1 class="app-title">ScamCheck</h1>
+        <p class="app-subtitle">
+          Paste a suspicious message, email or listing to get a second opinion.
+        </p>
+      </header>
+
+      <form id="check-form" class="check-form" novalidate>
+        <label class="field-label" for="message">Message to check</label>
+        <textarea
+          id="message"
+          class="message-input"
+          name="message"
+          rows="8"
+          maxlength="6000"
+          placeholder="Paste the message, email or listing here..."
+          aria-describedby="counter"
+        ></textarea>
+        <div id="counter" class="counter" aria-live="off">0 / 6000</div>
+
+        <label class="field-label" for="channel">Where did it come from?</label>
+        <select id="channel" class="channel-select" name="channel">
+          <option value="sms">SMS</option>
+          <option value="email">Email</option>
+          <option value="whatsapp">WhatsApp</option>
+          <option value="social">Social media</option>
+          <option value="marketplace">Marketplace</option>
+          <option value="other" selected>Other</option>
+        </select>
+
+        <div class="actions">
+          <button id="check-button" class="btn btn-primary" type="submit" disabled>
+            Check
+          </button>
+          <button id="clear-button" class="btn btn-secondary" type="button">Clear</button>
+        </div>
+      </form>
+
+      <section id="result" class="result" aria-live="polite"></section>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        We don't store your messages. Links are never opened. Personal details like
+        emails, phone numbers and card numbers are masked before analysis.
+      </p>
+    </footer>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
